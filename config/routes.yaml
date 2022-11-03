@@ -1,7 +1,3 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-
-app_test_testing:
-    path: /test/testing
-    controller: App\Controller\TestController::action
