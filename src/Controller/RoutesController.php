@@ -8,10 +8,31 @@
     class RoutesController extends AbstractController
     {
         /**
-        * @Route("/blog", name="blog_list")
+        * @Route("/test", name="test")
         */
         public function test(): Response
         {
-            return new Response("BLOG");
+
+            return new Response("TEST");
+        }
+
+        public function list() {
+
+            return new Response("LIST:");
+        }
+
+        public function show($id) {
+
+            return new Response($id);
+        }
+
+        public function contact() {
+
+            return new Response("CONTACT");
+        }
+
+        public function item($page) {
+
+            return new Response("BLOG: " . $page);
         }
     }

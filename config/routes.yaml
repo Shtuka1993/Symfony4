@@ -1,3 +1,21 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+blog_list:
+    path: '/blog/list'
+    controller: 'App\Controller\RoutesController::list'
+api_post_show:
+    path: '/api/posts/{id}'
+    controller: 'App\Controller\RoutesController::show'
+    methods: 'GET'
+contact:
+    path: '/contact'
+    controller: 'App\Controller\RoutesController::contact'
+    condition: "context.getMethod() in ['GET', 'HEAD'] and request.headers.get('User-Agent') matches '/firefox/i'"
+blog_item:
+    path: '/blog/{page}'
+    controller: 'App\Controller\RoutesController::item'
+    requirements: 
+        page: '\d+'
+    defaults:
+        page: '1'
