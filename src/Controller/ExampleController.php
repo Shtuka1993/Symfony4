@@ -4,6 +4,7 @@
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
+    use Psr\Log\LoggerInterface;
 
     class ExampleController extends AbstractController
     {
@@ -38,5 +39,14 @@
         public function symfony() {
 
             return $this->redirect('http://symfony.com/doc');
+        }
+
+        /**
+         * @Route("log", name="log")
+         */
+        public function log(LoggerInterface $logger) {
+            $logger->info('We are logging!');
+            
+            return new Response("It has been logged");
         }
     }
