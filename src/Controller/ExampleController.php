@@ -6,6 +6,7 @@
     use Symfony\Component\Routing\Annotation\Route;
     use Psr\Log\LoggerInterface;
     use Symfony\Component\Mime\Email;
+    use Symfony\Component\HttpFoundation\Request;
 
     class ExampleController extends AbstractController
     {
@@ -83,5 +84,12 @@
          */
         public function bad() {
             throw new \Exception('Something went wrong!');
+        }
+
+        /**
+         * @Route("request", name="request")
+         */
+        public function requestDump(Request $request) {
+            return $this->render('dump.html.twig', ['var' => $request]);
         }
     }
