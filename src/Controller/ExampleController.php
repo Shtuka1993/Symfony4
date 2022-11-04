@@ -70,4 +70,18 @@
 
             return new Response("Email was send to " . $email);
         }
+
+        /**
+         * @Route("404", name="404")
+         */
+        public function NotFound() {
+            throw $this->createNotFoundException('The page does not exist');
+        }
+
+        /**
+         * @Route("500", name="500")
+         */
+        public function bad() {
+            throw new \Exception('Something went wrong!');
+        }
     }
