@@ -33,4 +33,9 @@ services:
         tags: [controller.service_arguments]
         bind: 
             $mailer: '@mailer.mailer'
+
+    App\Controller\SessionController:
+        tags: [controller.service_arguments]
+        bind: 
+            $session: '@session'
     

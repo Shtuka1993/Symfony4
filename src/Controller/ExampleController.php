@@ -7,6 +7,7 @@
     use Psr\Log\LoggerInterface;
     use Symfony\Component\Mime\Email;
     use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class ExampleController extends AbstractController
     {
@@ -91,5 +92,14 @@
          */
         public function requestDump(Request $request) {
             return $this->render('dump.html.twig', ['var' => $request]);
+        }
+
+        /**
+         * @Route("add", name="add")
+         */
+        public function addSessionRecord(SessionInterface $session) {
+            $session->set('foo', 'bar'.random_int(1,100));
+
+            return new Response("Session variable foo was set");
         }
     }
