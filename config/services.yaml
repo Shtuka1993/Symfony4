@@ -38,4 +38,9 @@ services:
         tags: [controller.service_arguments]
         bind: 
             $session: '@session'
+
+    App\Controller\FlashController:
+        tags: [controller.service_arguments]
+        bind: 
+            $session: '@session'
     
