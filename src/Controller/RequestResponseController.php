@@ -35,4 +35,14 @@ class RequestResponseController extends AbstractController
             'ct' => $contentType,
         ]);
     }
+
+    /**
+     * @Route("style", name="style")
+     */
+    public function style() {
+        $response = new Response('<style> ... </style>');
+        $response->headers->set('Content-Type', 'text/css');
+
+        return $response;
+    }
 }
