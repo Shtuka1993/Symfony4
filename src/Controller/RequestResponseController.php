@@ -63,4 +63,13 @@ class RequestResponseController extends AbstractController
 
         return $this->json(['username' => 'jane.doe']);
     }
+
+    /**
+     * @Route("status", name="status")
+     */
+    public function status() {
+        $response = new Response('Hello!', Response::HTTP_OK);
+
+        return $response;
+    }
 }
