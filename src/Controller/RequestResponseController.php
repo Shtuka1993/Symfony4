@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class RequestResponseController extends AbstractController
 {
@@ -71,5 +74,19 @@ class RequestResponseController extends AbstractController
         $response = new Response('Hello!', Response::HTTP_OK);
 
         return $response;
+    }
+
+    /**
+     * @Route("file", name="file")
+     */
+    public function myFile() {
+        return $this->file('download/download.pdf');
+    }
+
+    /**
+     * @Route("view", name="view")
+     */
+    public function view() {
+        return $this->file('download/view.pdf', 'my_view.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
     }
 }
